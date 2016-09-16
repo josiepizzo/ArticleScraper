@@ -61,7 +61,7 @@ app.get('/scrape', function(req, res) {
  
 
 
-    $('.sparrow-item').each(function(i, element) { 
+    $('.sparrow-item faux-block-link').each(function(i, element) { 
 
         // save an empty result object
         var result = {};
