@@ -1,50 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-  <style>
-    body{
-      /*background-color: #DECADE*/
-      background-color: #F2F6D0
-    }
-    #wrapper{
-      width:960px;
-      margin: 0 auto;
-      padding-top: 5%;
-    }
-    #articles{
-      width:60%;
-      height:700px;
-      display:inline-block;
-      overflow: auto;
-    }
-    #notes{
-      width:30%;
-      float:right;
-    }
-    textarea, input{
-      display:block;
-      width:100%;
-      background-color: #FCF5C7;
-    }
-    input{
-      height:36px;
-      font-size: 24px;
-    }
-    textarea{
-      height:200px;
-      font-size: 18px;
-    }
-  </style>
+  <title>Article Scraper</title>
+<!-- Latest compiled and minified CSS & JS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
 </head>
 <body>
-  <div id="wrapper">
-    <h1>Note Scraper</h1>
-    <h2><i>If you can do this...the homework should be no problem.</i></h2>
-    <div id="articles"></div>
-    <div id="notes"></div>
-  </div>
+<div class="container">
+    
+    <div class="jumbotron">
+    <img src="https://s19.postimg.org/r4xwo2pzn/bbc_blocks_dark.png" alt="BBC News"  aria-hidden="true"> <h1 class="">BBC Latest News</h1>
+      <hr>
+      <h2 class="">Note Scraper</h2>
+      <br>
+    </div>
+
+  <div id="articles"> 
+    <h2 class="">ARTICLES</h2>
+    
+     <div id="Article"></div>
+    
+
+
+    </div>
+<br/><br/><br/><br/>
+  <footer class="footer">
+        <div class="container">
+           <a href="https://github.com/josiepizzo/ArticleScraper">GitHub Repo</a></p>
+        </div>
+      </footer>
+
+
   <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
   <script src="app.js"></script>
 </body>
