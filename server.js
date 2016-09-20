@@ -11,6 +11,7 @@ var mongoose = require('mongoose');
 // Notice: Our scraping tools are prepared, too
 var request = require('request');
 var cheerio = require('cheerio');
+var handlebars = require('express-handlebars');
 
 // use morgan and bodyparser with our app
 app.use(logger('dev'));
@@ -41,57 +42,31 @@ db.once('open', function() {
 var Note = require('./models/Note.js');
 var Article = require('./models/Article.js');
 
+app.engine('handlebars', handlebars({defaultLayout: 'main'}));
+//will be the skeleton of every webpage
+
+app.set('view engine', 'handlebars');
 
 // Routes
 // ======
 
 // Simple index route
-app.get('/', function(req, res) {
-    res.send(index.html);
+
+app.get('/', function(req,res){
+    res.render('index.handlebars');
 });
 
 // A GET request to scrape the echojs website.
 app.get('/scrape', function(req, res) {
     // first, we grab the body of the html with request
-    request('http://www.bbc.com/news/', function(error, response, html) {
+    request('http://www.bbc.com/news', function(error, response, html) {
       console.log("bbc-call")
         // then, we load that into cheerio and save it to $ for a shorthand selector
         var $ = cheerio.load(html);
-        // now, we grab every h2 within an article tag, and do the following:
-        //$('article h2').each(function(i, element) {
 
-        // $('.sparrow-item__body').each(function(i, element) { console.log($(this).text()); 
-        // });
-
-        $('.sparrow-item__body').each(function(i, element) {
-            console.log("to this point")
-            // save an empty result object
-            var result = {};
-
-            // add the text and href of every link, 
-            // and save them as properties of the result obj
-            result.title = $(this).children('h3').text();
-            result.link = $(this).children('a').attr('href');
-            result.summary = $(this).find('p').text();
-
-            // using our Article model, create a new entry.
-            // Notice the (result):
-            // This effectively passes the result object to the entry (and the title and link)
-            var entry = new Article(result);
-
-            // now, save that entry to the db
-            entry.save(function(err, doc) {
-                // log any errors
-                if (err) {
-                    console.log(err);
-                }
-                // or log the doc
-                else {
-                    console.log(doc);
-                }
-            });
-
-
+        $('#comp-features .sparrow-item__body').each(function(i, element) {
+;           
+            console.log($(this).text());
         });
     });
     // tell the browser that we finished scraping the text.
@@ -165,9 +140,6 @@ app.post('/articles/:id', function(req, res) {
         }
     });
 });
-
-
-
 
 
 
