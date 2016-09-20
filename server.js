@@ -60,13 +60,17 @@ app.get('/', function(req,res){
 app.get('/scrape', function(req, res) {
     // first, we grab the body of the html with request
     request('http://www.bbc.com/news', function(error, response, html) {
-      console.log("bbc-call")
+      //console.log("bbc-call")
         // then, we load that into cheerio and save it to $ for a shorthand selector
         var $ = cheerio.load(html);
-
+        // now, we grab every h3 within an article tag, and do the following:
         $('#comp-features .sparrow-item__body').each(function(i, element) {
-;           
+            // save an empty result object
+            var result ={};            
+
+            result.link = $(this).find('a').attr('href');
             console.log($(this).text());
+
         });
     });
     // tell the browser that we finished scraping the text.
