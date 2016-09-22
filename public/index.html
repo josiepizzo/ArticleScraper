@@ -1,46 +1,49 @@
 <!DOCTYPE html>
-<html>
 <head>
-  <title>Article Scraper</title>
-<!-- Latest compiled and minified CSS & JS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://code.jquery.com/jquery.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-
+    <title>Article Scraper</title>
+    <!-- Latest compiled and minified CSS & JS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery.js"></script>
+   <!--  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
 </head>
+
 <body>
-<div class="container">
-    
-    <div class="jumbotron">
-    <img src="https://s19.postimg.org/r4xwo2pzn/bbc_blocks_dark.png" alt="BBC News"  aria-hidden="true"> <h1 class="">BBC Latest News</h1>
-      <hr>
-      <h2 class="">Note Scraper</h2>
-      <br>
-    </div>
-
-  <div id="articles"> 
-    <h2 class="">ARTICLES</h2>
-    
-     <div id="Article"></div>
-    
-      <ul>
-        {{#each article}}
-            <li><a href="{{this.text}}">{{this.title}}</a></li>
-            <input type="text" class="form-control" name="comment" value="" placeholder="comment">
-        {{/each}}
-      </ul>
-
-    </div>
-<br/><br/><br/><br/>
-  <footer class="footer">
-        <div class="container">
-           <a href="https://github.com/josiepizzo/ArticleScraper">GitHub Repo</a></p>
+    <div class="container">
+        <div class="jumbotron">
+            <img src="https://s19.postimg.org/r4xwo2pzn/bbc_blocks_dark.png" alt="BBC News" aria-hidden="true">
+            <h1 class="">BBC Latest News</h1>
+            <hr>
+            <h2 class="">Note Scraper</h2>
+            <br>
         </div>
-      </footer>
+        <div id="wrapper">
+            <h2 class="">ARTICLES</h2>
+            <div id="articles"></div>
+        </div>
 
+        <!-- <div id="articles" class="list-group">
+            <a href="#" class="list-group-item active">
+                <h4 class="list-group-item-heading">List group item heading</h4>
+                <p class="list-group-item-text">...</p>
+            </a>
+        </div> -->
 
-  <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-  <script src="app.js"></script>
+    <div id="note">
+        <input type="text" class="form-control" name="comment" value="" placeholder="comment">
+    </div>
+    <br/>
+    <div id="notes"></div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <footer class="footer">
+        <div class="container">
+            <a href="https://github.com/josiepizzo/ArticleScraper">GitHub Repo</a></p>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <script src="app.js"></script>
 </body>
+
 </html>

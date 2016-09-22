@@ -42,10 +42,6 @@ db.once('open', function() {
 var Note = require('./models/Note.js');
 var Article = require('./models/Article.js');
 
-app.engine('handlebars', handlebars({defaultLayout: 'main'}));
-//will be the skeleton of every webpage
-
-app.set('view engine', 'handlebars');
 
 // Routes
 // ======
@@ -53,7 +49,7 @@ app.set('view engine', 'handlebars');
 // Simple index route
 
 app.get('/', function(req,res){
-    res.render('index.handlebars');
+    res.render(index.html);
 });
 
 // A GET request to scrape the echojs website.
@@ -64,12 +60,17 @@ app.get('/scrape', function(req, res) {
         // then, we load that into cheerio and save it to $ for a shorthand selector
         var $ = cheerio.load(html);
         // now, we grab every h3 within an article tag, and do the following:
-        $('#comp-features .sparrow-item__body').each(function(i, element) {
+        // $('a.faux-block-link__overlay-link').each(function(i, element) {
+        $('a.faux-block-link__overlay-link').each(function(i, element) {
+            
             // save an empty result object
             var result ={};            
 
-            result.link = $(this).find('a').attr('href');
-            console.log($(this).text());
+            result.title = $(this).text();
+            console.log($(this).text())
+            
+            result.link = $(this).attr('href');
+            //console.log($(this).attr('href'));
 
         });
     });
