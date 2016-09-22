@@ -1,0 +1,40 @@
+<style>
+    body{
+      background-color: #white;
+    }
+    html { 
+      background-color: #white;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+    #wrapper{
+      width:960px;
+      margin: 0 auto;
+      padding-top: 5%;
+    }
+    #articles{
+      width:90%;
+      height:700px;
+      display:inline-block;
+      overflow: auto;
+    }
+    #notes{
+      width:30%;
+      float:right;
+    }
+    textarea, input{
+      display:block;
+      width:100%;
+      background-color: #ffe5cc;
+    }
+    input{
+      height:36px;
+      font-size: 24px;
+    }
+    textarea{
+      height:200px;
+      font-size: 18px;
+    }
+  </style>
