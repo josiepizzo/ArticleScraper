@@ -15,14 +15,10 @@
       padding-top: 5%;
     }
     #articles{
-      width:90%;
       height:700px;
-      display:inline-block;
       overflow: auto;
     }
-    #notes{
-      width:30%;
-      float:right;
+    #notes{     
     }
     textarea, input{
       display:block;
@@ -36,5 +32,11 @@
     textarea{
       height:200px;
       font-size: 18px;
+    }
+    p.title {
+      cursor: pointer;      
+    }
+    p.title:hover {
+      text-decoration: underline;
     }
   </style>

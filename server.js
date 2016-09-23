@@ -56,8 +56,8 @@ app.get('/', function(req, res) {
 app.get('/scrape', function(req, res) {
     console.log('scraping');
     // first, we grab the body of the html with request
-    request('http://www.bbc.com/', function(error, response, html) {
-        console.log("html", html)
+    request('http://www.bbc.com/news', function(error, response, html) {
+        //console.log("html", html)
         // then, we load that into cheerio and save it t;o $ for a shorthand selector
         var $ = cheerio.load(html);
         // now, we grab every h3 within an article tag, and do the following:
@@ -78,6 +78,7 @@ app.get('/scrape', function(req, res) {
 
             var entry = new Article(result);
             entry.save(function(err, doc) {
+                console.log('entry', entry);
                 if (err) {
                     console.log(err);
                 }
@@ -93,6 +94,19 @@ app.get('/scrape', function(req, res) {
         })
     })
 });
+
+app.get('/articles', function(req, res) {
+    Article.find({})
+        .populate('note')
+        .exec(function(err, doc) {
+            if (err) {
+                console.log(err);
+            } else {
+                res.json(doc);
+            }
+        });
+});
+
 //this gets the article and note and returns as a JSON to be used when
 //displaying the text box for the note.  (headline goes above text box)
 app.get('/articles/:id', function(req, res) {
