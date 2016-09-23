@@ -23,7 +23,7 @@ app.use(express.static('public'));
 
 
 // Database configuration with mongoose
-mongoose.connect('mongodb://localhost/articledb');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/articledb');
 var db = mongoose.connection;
 
 // show any mongoose errors
@@ -206,6 +206,6 @@ app.post('/dropdb', function(req, res) {
 
 
 // listen on port 3000
-app.listen(3000, function() {
+app.listen(process.env.PORT || 3000, function() {
     console.log('App running on port 3000!');
 });
